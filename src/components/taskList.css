@@ -1,0 +1,18 @@
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Creates a 3-column grid */
+  gap: 20px; /* Adds a gap between the cards */
+  margin-top:8px;
+}
+
+.container div {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /*  Adds a subtle shadow for a "card" effect */
+}
+
+.container p {
+  margin: 0;
+  padding: 0;
+}
