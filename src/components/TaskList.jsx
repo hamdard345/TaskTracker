@@ -1,14 +1,21 @@
 import './taskList.css'
 
-function TaskList({tasks}) {
-  const displayTasks = Array.isArray(tasks) ? tasks.map((task,index) =>{
+function TaskList({tasks,setTasks}) {
+  const handleCompleted = index => {
+    const updatedTask = [...tasks];
+    updatedTask[index].completed = true;
+    setTasks(updatedTask);
+  }
+  const displayTasks =  tasks.map((task,index) =>{
     return (
       <div key={index}>
         <p>Title : {task.taskTitle}</p>
         <p>Task : {task.inputText}</p>
+        <p>{task.completed ? "(Done)" : "Not done yet"}</p>
+        <button onClick={()=>handleCompleted(index)}>Mark as completed</button>
       </div>
     )
-  }) : null;
+  }) 
   return (
     <div className='container'>
       {displayTasks}

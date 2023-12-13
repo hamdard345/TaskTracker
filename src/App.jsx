@@ -16,7 +16,7 @@ function App() {
         <h3 className="title">Task Tracker</h3>
       </div>
       <TaskForm tasks={tasks} setTasks={setTasks} />
-      <TaskList tasks={tasks} />
+      <TaskList tasks={tasks} setTasks={setTasks} />
     </>
   );
 }
