@@ -1,34 +1,45 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import "./TaskForm.css";
 
 function TaskForm({ tasks, setTasks }) {
   const [inputText, setInputText] = useState("");
   const [taskTitle, setTaskTitle] = useState("");
+  const [completed, setCompleted] = useState(false);
 
+ 
   const handleSave = event => {
     const newTask = {
       taskTitle,
       inputText,
-      completed: false,
+      completed:false
     };
     const formData = new FormData();
     formData.append("title", taskTitle);
     formData.append("description", inputText);
-    formData.append("completed", "false");
+    formData.append("completed", false);
     formData.append("createdAt", new Date().toISOString());
 
-    fetch("https://localhost/tasktracker/tasktrackerapi/addtask/", {
+    fetch("https://localhost/tasktracker/tasktrackerapi/addtask", {
       method: "POST",
       body: formData,
     })
       .then(response => response.json())
       .then(json => {
         if (json.message === "Success") {
-          // If the request was successful, update the local state
-          setTasks([...tasks, newTask]);
+          const formData = new FormData();
+          formData.append("deleted",0)
+          fetch("https://localhost/tasktracker/tasktrackerapi/alltasks/",{
+            method:"POST",
+            body:formData,
+            })
+    .then((response) => response.json())
+    .then((json) =>{
+      
+        setTasks(json.data)
+      
           setInputText("");
           setTaskTitle("");
-        } else {
+        })} else {
           // Handle errors here, e.g., show an error message
           console.error("Failed to save task:", json.message);
         }
