@@ -26,7 +26,7 @@ function App() {
   return (
     <>
       <div className="navBar">
-        <h3 className="title">Task Tracker</h3>
+        <h1 className="title">Task Tracker</h1>
       </div>
       <TaskForm tasks={tasks} setTasks={setTasks} />
       <TaskList tasks={tasks} setTasks={setTasks} />

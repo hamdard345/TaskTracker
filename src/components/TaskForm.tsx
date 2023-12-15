@@ -1,5 +1,6 @@
 import React, { useState,useEffect } from "react";
 import "./TaskForm.css";
+import { Button, TextField } from "@mui/material";
 
 function TaskForm({ tasks, setTasks }) {
   const [inputText, setInputText] = useState("");
@@ -48,22 +49,28 @@ function TaskForm({ tasks, setTasks }) {
 
   return (
     <div className="taskform">
-      <h1>Add Task</h1>
+      <h3>Add Task</h3>
       <label>Task Title: </label>
-      <input
+      <TextField 
         type="text"
         value={taskTitle}
         onChange={e => setTaskTitle(e.target.value)}
       />
-      <label>Task Description:</label>
-      <input
+      <label for ="inputText">Task Description:</label>
+      <TextField
         type="text"
+        id="inputText"
         value={inputText}
         onChange={e => setInputText(e.target.value)}
       />
-      <button className="saveButton" onClick={handleSave}>
+      <Button
+        className="saveButton"
+        sx={{ m:"10px" }}
+        variant="contained"
+        color="secondary"
+        onClick={handleSave}>
         Save Task
-      </button>
+      </Button>
     </div>
   );
 }

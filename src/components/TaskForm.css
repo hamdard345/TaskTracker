@@ -2,10 +2,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 1px solid #ddd;
+  border: 1px dashed #000000;
   border-radius: 5px;
+  border-width: 2px;
   width: 100%;
-  gap: 6px;
+  background-color: #90ee90;  
+  color: black;
+  
   
 }
 .saveButton {
